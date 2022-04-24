@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% if pred %}
+<div class = "container text-white bg-info">
+    <p>selected symptoms : 
+        {% for s in selected_syms %}
+        {{ s }}
+        {% endfor %}
+    </p>
+</div>
+<hr>
+<div class = "container">
+  <div class = "row" >
+        <div class ="col-sm-4">
+
+            <div class="card text-white bg-secondary mb-3" style="max-width: 24rem;">
+            <div class="card-header">Prediction-1</div>
+            <div class="card-body">
+            <h4 class="card-title">{{ pred[0] }}</h5>
+            <p class="card-text">Decision Tree has predicted the disease as {{ pred[0] }}</p>
+            </div>
+            </div>
+        </div>
+
+        <div class ="col-sm-4">
+            <div class="card text-white bg-secondary mb-3" style="max-width: 24rem;">
+            <div class="card-header">Predicton-2</div>
+            <div class="card-body">
+            <h4 class="card-title">{{ pred[1] }}</h5>
+            <p class="card-text">Random Forest model has predicted the disease as {{ pred[1] }}</p>
+            </div>
+            </div>
+        </div>
+
+        <div class ="col-sm-4">
+
+            <div class="card text-white bg-secondary mb-3" style="max-width: 24rem;">
+            <div class="card-header">Prediction-3</div>
+            <div class="card-body">
+            <h4 class="card-title">{{ pred[2] }}</h5>
+            <p class="card-text"> Naive Bayes Model has predicted the disease as {{ pred[2] }} </p>
+            </div>
+            </div>
+        </div>
+  </div>
+</div>
+{% endif %}
+
+
+
+{% endblock %}

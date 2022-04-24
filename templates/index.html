@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<center>
+
+<div class="card text-white bg-info col-sm-10">
+  <div class="card-header">Welcome to health Prediction System</div>
+  <div class="card-body">
+    <h3 class="card-title">Select the symptoms below</h3>
+    <form method = "post" action="/">
+          <div class="mb-3">
+            <select class="form-select" name="s1" >
+              <option selected>Select Symptom - 1</option>
+              {% for sym in symptoms: %}
+              <option value="{{ sym }}">{{ sym }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-select" name="s2" >
+              <option selected>Select Symptom - 2</option>
+              {% for sym in symptoms: %}
+              <option value="{{ sym }}">{{ sym }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-select" name="s3" >
+              <option selected>Select Symptom - 3</option>
+              {% for sym in symptoms: %}
+              <option value="{{ sym }}">{{ sym }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-select" name="s4" >
+              <option selected>Select Symptom - 4</option>
+              {% for sym in symptoms: %}
+              <option value="{{ sym }}">{{ sym }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <select class="form-select" name="s5" >
+              <option selected>Select Symptom - 5</option>
+              {% for sym in symptoms: %}
+              <option value="{{ sym }}">{{ sym }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Predict</button>
+
+  </form>
+</div>
+</div>
+<br>
+
+{% if pred %}
+<div class = "container text-black bg-light">
+    <p>Selected Symptoms 
+      <br>
+        {% for s in selected_syms %}
+        {{ s }} , 
+        {% endfor %}
+    </p>
+</div>
+<hr>
+
+<div class = "container">
+  <div class = "row" >
+        <div class ="col-sm-4">
+
+            <div class="card text-white bg-secondary mb-3" style="max-width: 24rem;">
+            <div class="card-header">Prediction-1</div>
+            <div class="card-body">
+            <h5 class="card-title">{{ pred[0] }}</h5>
+            <p class="card-text">Decision Tree has predicted the disease as {{ pred[0] }}</p>
+            </div>
+            </div>
+        </div>
+
+        <div class ="col-sm-4">
+            <div class="card text-white bg-secondary mb-3" style="max-width: 24rem;">
+            <div class="card-header">Predicton-2</div>
+            <div class="card-body">
+            <h5 class="card-title">{{ pred[1] }}</h5>
+            <p class="card-text">Random Forest model has predicted the disease as {{ pred[1] }}</p>
+            </div>
+            </div>
+        </div>
+
+        <div class ="col-sm-4">
+
+            <div class="card text-white bg-secondary mb-3" style="max-width: 24rem;">
+            <div class="card-header">Prediction-3</div>
+            <div class="card-body">
+            <h5 class="card-title">{{ pred[2] }}</h5>
+            <p class="card-text"> Naive Bayes Model has predicted the disease as {{ pred[2] }} </p>
+            </div>
+            </div>
+        </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
